@@ -7,5 +7,8 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="org.apache.commons:commons-compress:1.19" level="project" />
+    <orderEntry type="library" name="edu.jhu.hlt:concrete-core:4.13" level="project" />
+    <orderEntry type="library" name="edu.jhu.hlt:concrete-util:4.15.0" level="project" />
   </component>
 </module>

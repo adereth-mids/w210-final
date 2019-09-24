@@ -1,0 +1,24 @@
+<component name="libraryTable">
+  <library name="edu.jhu.hlt:concrete-core:4.13" type="repository">
+    <properties maven-id="edu.jhu.hlt:concrete-core:4.13" />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/concrete-core-4.13.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/libthrift-0.9.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/slf4j-api-1.7.12.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/httpclient-4.4.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/commons-logging-1.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/commons-codec-1.9.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/httpcore-4.4.1.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$PROJECT_DIR$/lib/concrete-core-4.13-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/libthrift-0.9.3-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/slf4j-api-1.7.12-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/httpclient-4.4.1-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/commons-logging-1.2-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/commons-codec-1.9-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/httpcore-4.4.1-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES />
+  </library>
+</component>
