@@ -1,6 +1,0 @@
-article_id,article_date,article_title,article_body,predicted_party,prediction_confidence
-1,2019-10-27T21:36:37.577Z,politics article,politics are bad,republican,0.8
-2,2018-10-27T21:36:37.577Z,politics article,politics are good,democrat,0.7
-3,2017-10-27T21:36:37.577Z,politics article,politics are silly,democrat,0.6
-4,2016-10-27T21:36:37.577Z,politics article,politics are not wise,republican,0.9
-5,2015-10-27T21:36:37.577Z,politics article,politics are neutral,neutral,0.4
