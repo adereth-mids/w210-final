@@ -1,23 +1,28 @@
+// Set the dimensions of the canvas / graph
+var margin = {top: 30, right: 20, bottom: 30, left: 50},
+width = 1000 - margin.left - margin.right,
+height = 500 - margin.top - margin.bottom;
+
+// Parse the date
+var formatDate = d3.time.format("%d-%b-%y");
+
+// Set the ranges
+var x = d3.time.scale().range([0, width]);
+var y = d3.scale.linear().range([height, 0]);
+
+// Define Colors
+const blueHex = "#495D70";
+const redHex = "#CC6868";
+const greyHex = "grey";
+
+// Define the axes
+var xAxis = d3.svg.axis().scale(x)
+.orient("bottom").ticks(5);
+
+var yAxis = d3.svg.axis().scale(y)
+.orient("left").ticks(5);
+
 const loadChart = (data) => {
-    // Set the dimensions of the canvas / graph
-    var margin = {top: 30, right: 20, bottom: 30, left: 50},
-    width = 600 - margin.left - margin.right,
-    height = 270 - margin.top - margin.bottom;
-
-    // Parse the date
-    var formatDate = d3.time.format("%d-%b-%y");
-
-    // Set the ranges
-    var x = d3.time.scale().range([0, width]);
-    var y = d3.scale.linear().range([height, 0]);
-
-    // Define the axes
-    var xAxis = d3.svg.axis().scale(x)
-    .orient("bottom").ticks(5);
-
-    var yAxis = d3.svg.axis().scale(y)
-    .orient("left").ticks(5);
-
     // Define the line
     var valueline = d3.svg.line()
     .x(function(d) { return x(d.article_date); })
@@ -45,7 +50,7 @@ const loadChart = (data) => {
     // Add the valueline path.
     svg.append("path")
     .attr("class", "line")
-    .attr("stroke", "grey")
+    .attr("stroke", greyHex)
     .attr("stroke-width", 2)
     .attr("fill", "none")
     .attr("opacity", 0.3)
@@ -56,7 +61,7 @@ const loadChart = (data) => {
     .data(data)
     .enter().append("circle")
     .attr("r", function(d) { return 10 * d.prediction_confidence })
-    .attr("fill", function(d) { return (d.predicted_party === 'republican' ? 'red' : 'blue') })
+    .attr("fill", function(d) { return (d.predicted_party === 'republican' ? redHex : blueHex) })
     .attr("cx", function(d) { return x(d.article_date); })
     .attr("cy", function(d) { return y(d.prediction_confidence); })
     .on("mouseover", function(d) {
@@ -111,26 +116,25 @@ const reload = () => {
     });
 }
 
-window.currentSection = 0;
-const scrollToNextSection = () => {
-    $('html, body').animate({
-        scrollTop: $(`#waypoint-${window.currentSection + 1}`).offset().top,
-        easing: 'easeout',
-    }, 1000);
-    window.currentSection += 1;
-    console.log(`Current Section: ${window.currentSection}`);
-}
+// window.currentSection = 0;
+// const scrollToNextSection = () => {
+//     $('html, body').animate({
+//         scrollTop: $(`#waypoint-${window.currentSection + 1}`).offset().top,
+//         easing: 'easeout',
+//     }, 1000);
+//     window.currentSection += 1;
+// }
 
 $(document).ready(function() {
-    const waypoints = [];
-    for (let i = 0; i < 7; i++) {
-        var waypoint = new Waypoint({
-            element: document.getElementById(`waypoint-${i}`),
-            handler: function() { window.currentSection = i }
-        });
-        waypoints.push(waypoint);
-    }
+    // const waypoints = [];
+    // for (let i = 0; i < 7; i++) {
+    //     var waypoint = new Waypoint({
+    //         element: document.getElementById(`waypoint-${i}`),
+    //         handler: function() { window.currentSection = i }
+    //     });
+    //     waypoints.push(waypoint);
+    // }
 
     var rellax = new Rellax('.rellax', { center: true });
-    reload('trump');
+    reload('Trump');
 });
