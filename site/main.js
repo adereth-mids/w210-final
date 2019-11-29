@@ -129,7 +129,7 @@ const loadData = (keyword, limit, callback) => {
                 article_id: t,
                 article_date: presidentialTerms[t],
                 predicted_party: party,
-                prediction_confidence: confidence,
+                prediction_confidence: confidence * 100,
             };
             data.push(computedTerm);
         }
