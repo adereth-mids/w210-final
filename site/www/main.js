@@ -1,19 +1,40 @@
-const loadBarChart = (data) => {
-    const margin = {top: 30, right: 20, bottom: 70, left: 50},
+const loadLineChart = (data) => {
+
+    const margin = {top: 30, right: 20, bottom: 70, left: 110},
           width = 1000 - margin.left - margin.right,
           height = 500 - margin.top - margin.bottom;
 
-    const formatDate = d3.time.format("%d-%b-%y");
+    const formatDate = d3.time.format("%y");
 
     const blueHex = "#495D70";
     const redHex = "#CC6868";
     const greyHex = "grey";
 
+    const colors = d3.scale.linear().domain([25,50,75]).range([blueHex, greyHex, redHex]);
+
     const x = d3.scale.ordinal().rangeRoundBands([20, width], .05);
     const y = d3.scale.linear().range([height, 0]);
 
-    const xAxis = d3.svg.axis().scale(x).orient("bottom").ticks(5);
-    const yAxis = d3.svg.axis().scale(y).orient("left").ticks(5);
+    const xAxis = d3.svg.axis().scale(x).orient("bottom").ticks(5).tickFormat(function(t) { return `\'${t}`});
+    const yAxis = d3.svg.axis().scale(y).orient("left").ticks(10).tickFormat(function(t) {
+        if (t === 100) {
+            return 'Republican';
+        } else if (t === 50) {
+            return 'Neutral';
+        } else if (t === 0) {
+            return 'Democrat';
+        } else {
+            return null;
+        }
+    });
+
+    data.forEach(function(d) {
+        d.date = formatDate(d.article_date);
+        d.value = +d.prediction_confidence;
+        d.value = (d.predicted_party === 'republican' ? d.value : 50 - (d.value - 50));
+    });
+
+    var valueline = d3.svg.line().x(function(d) { return x(d.date); }).y(function(d) { return y(d.value); });
 
     d3.select("#graphic").html("");
 
@@ -21,26 +42,28 @@ const loadBarChart = (data) => {
                   .attr("height", height + margin.top + margin.bottom).append("g")
                   .attr("transform","translate(" + margin.left + "," + margin.top + ")");
 
-    data.forEach(function(d) {
-        d.date = formatDate(d.article_date);
-        d.value = +d.prediction_confidence;
-    });
-
     x.domain(data.map(function(d) { return d.date; }));
-    y.domain([0, d3.max(data, function(d) { return d.value; })]);
+    y.domain([0, 100]);
 
-    svg.append("g").attr("class", "x axis").attr("transform", "translate(0," + height + ")").call(xAxis)
-       .selectAll("text").style("text-anchor", "end").attr("dx", "-.8em").attr("dy", "-.55em").attr("transform", "rotate(-90)" );
+    svg.append("path").attr("class", "line").attr("stroke", greyHex).attr("stroke-width", 2)
+       .attr("fill", "none").attr("opacity", 0.3).attr("d", valueline(data));
+
+    svg.selectAll("dot").data(data).enter().append("circle").attr("r", function(d) { return 10 })
+       .attr("fill", function(d) { return colors(d.value)}) // function(d) { return (d.predicted_party === 'republican' ? redHex : blueHex) }
+       .attr("cx", function(d) { return x(d.date); }).attr("cy", function(d) { return y(d.value); })
+
+    svg.append("g").attr("class", "x axis").attr("transform", "translate(0," + height + ")").call(xAxis);
+
+    svg.append("g").attr("class", "y axis").call(yAxis);
 
     svg.append("g").attr("class", "y axis").call(yAxis).append("text").attr("transform", "rotate(-90)").attr("y", 6)
-       .attr("dy", ".71em").style("text-anchor", "end").text("Prediction Confidence (%)");
+       .attr("dy", ".71em").style("text-anchor", "end").text("Sounds Like");
 
-    svg.selectAll("bar").data(data).enter().append("rect").style("fill", function(d) { return (d.predicted_party === 'republican' ? redHex : blueHex) })
-        .attr("x", function(d) { return x(d.date); }).attr("width", x.rangeBand()).attr("y", function(d) { return y(d.value); })
-        .attr("height", function(d) { return height - y(d.value); });
+    svg.selectAll(".text").data(data).enter().append("text").attr("class","label").attr("x", (function(d) { return x(d.date) + (x.rangeBand() / data.length - 18); }  ))
+       .attr("y", function(d) { return y(d.value) - 25; }).attr("dy", ".75em").text(function(d) { return `${50 + Math.abs(50 - Math.round(d.value))}%`; });
 
-    svg.selectAll(".text").data(data).enter().append("text").attr("class","label").attr("x", (function(d) { return x(d.date) + (x.rangeBand() / 2.6); }  ))
-        .attr("y", function(d) { return y(d.value) - 20; }).attr("dy", ".75em").text(function(d) { return `${Math.round(d.value)}%`; });
+    svg.append("line").attr("x1", 27).attr("y1", height / 2).attr("x2", width - 5).attr("y2", height / 2)
+       .attr("stroke-width", 2).attr("stroke", "rgba(0,0,0,0.2)").style("stroke-dasharray", ("3, 3"));
 }
 
 const loadData = (keyword, limit, callback) => {
@@ -117,7 +140,8 @@ const loadData = (keyword, limit, callback) => {
 const reload = () => {
     const keyword = document.getElementById('keyword').value;
     loadData(keyword, '1000', (data) => {
-        loadBarChart(data);
+        // loadBarChart(data);
+        loadLineChart(data);
     });
 }
 
