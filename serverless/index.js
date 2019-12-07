@@ -11,7 +11,8 @@ exports.main = (req, res) => {
 
     con.connect(function(err) {
         if (err) res.status(500).send(err);
-        con.query(`SELECT * FROM articles WHERE content LIKE '%${req.query.keyword}%' LIMIT ${Math.min(req.query.limit, 1000)};`, function (err, result, fields) {
+        const keyword = `%${req.query.keyword}%`;
+        con.query(`SELECT * FROM articles WHERE content LIKE ${con.escape(keyword)} LIMIT ${Math.min(req.query.limit, 2000)};`, function (err, result, fields) {
             if (err) res.status(500).send(err);
             res.status(200).send(result);
         });
