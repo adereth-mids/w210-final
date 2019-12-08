@@ -91,7 +91,7 @@ const loadModelHistogram = (data) => {
        .attr("width", x.rangeBand()).attr("y", function(d) { return y(d.accuracy); }).attr("height", function(d) { return height - y(d.accuracy); });
 
     svg.selectAll(".text").data(data).enter().append("text").attr("class","label").attr("x", (function(d) { return x(d.model) + 60 }  ))
-       .attr("y", function(d) { return y(d.accuracy) - 25; }).attr("dy", ".75em").text(function(d) { return `${d.accuracy}%`; });
+       .attr("y", function(d) { return y(d.accuracy) - 25; }).attr("dy", ".75em").text(function(d) { return `${d.accuracy * 100}%`; });
 }
 
 const loadLineChart = (data) => {
