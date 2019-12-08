@@ -13,6 +13,17 @@ article
             p We seek to skirt the issue of temporal relativity and the problems of identifying sentiment with questionably applicable training data by training a classifier that predicts whether an article was spoken by a Democrat or a Republican. We then apply the classifier to news articles over time to evaluate whether the language used sounds like it came from one party or the other.
 
     .section
+        .contents
+            h3.rellax(data-rellax-speed="0.5") Building a Model
+            p Our training dataset was gathered from a set of presidential speeches going back to 1995. It contained over 7GB of pure text files with a slight republican bias (50.85%).
+            p We generated a histogram of the distribution by party and presidential term and also observed an imbalance.
+            .model-graphic(id="party-term-histogram")
+            p We then sampled equally from each party within each term to generate a training dataset of roughly 283,000 political statements.
+            p This dataset was benchmarked in a Random Forest classifier, which disappointingly fell below a default accuracy threshold of 50%. We trained a Convolutional Neural Network (CNN) and a Recurrent Neural Network (RNN), both of which performed better.
+            p Since our RNN performed best, we selected it for hyperparameter tuning and labeling of our New York Times dataset.
+            .model-graphic(id="model-performance-histogram")
+
+    .section
         .contents.contents-articles
             h3.rellax(data-rellax-speed="0.5") Sample Articles
             .article
@@ -53,6 +64,3 @@ article
                 p
                     i A few good sample keywords are "fiscal", "philanthropy", and "immigration."
             #graphic
-
-//- .next-section
-//-     p(onClick="return scrollToNextSection()")  Click Here
