@@ -235,7 +235,7 @@ const loadData = (keyword, limit, callback) => {
 
 const reload = () => {
     const keyword = document.getElementById('keyword').value;
-    loadData(keyword, '100', (data) => {
+    loadData(keyword, '1000', (data) => {
         loadLineChart(data);
     });
 }
