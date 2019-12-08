@@ -17,15 +17,16 @@ article {
   margin: 0 auto;
 }
 
-.section {
-  height: 100vh;
-}
+// .section {
+//   height: 100vh;
+// }
 
 .contents {
-  position: relative;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  // position: relative;
+  // top: 50%;
+  // left: 50%;
+  // transform: translate(-50%, -50%);
+  margin: 100px auto;
   max-width: 600px;
   p {
     font-family: 'Roboto', sans-serif;
@@ -33,6 +34,35 @@ article {
   }
   &-graphic {
     max-width: 1200px;
+  }
+  &-articles {
+    .article {
+      border: 1px solid #d7d7d7;
+      background: #e5e5e5;
+      border-radius: 10px;
+      padding: 10px 20px;
+      margin: 1rem 0;
+      h3 {
+        margin: 0.25rem 0;
+      }
+      h4 {
+        margin: 0;
+        font-family: 'Roboto Condensed', sans-serif;
+        font-weight: normal;
+        text-transform: uppercase;
+      }
+      .confidence {
+        margin-top: 1.33em;
+      }
+      p {
+        display: block;
+        font-size: 0.83em;
+        margin-block-start: 1.67em;
+        margin-block-end: 1.67em;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+      }
+    }
   }
 }
 
@@ -52,22 +82,30 @@ p.byline {
   margin-bottom: 4rem;
 }
 
-.next-section {
-  height: 30vh;
-  position: fixed;
-  bottom: 0;
-  text-align: center;
-  width: 100%;
-  background: rgb(209,209,209);
-  background: linear-gradient(180deg, rgba(209,209,209,0) 0%, rgba(238,238,238,1) 100%);
-  p {
-    position: relative;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 1.5rem;
-  }
+.republican {
+  color:#CC6868;
 }
+
+.democrat {
+  color: #495D70;
+}
+
+// .next-section {
+//   height: 30vh;
+//   position: fixed;
+//   bottom: 0;
+//   text-align: center;
+//   width: 100%;
+//   background: rgb(209,209,209);
+//   background: linear-gradient(180deg, rgba(209,209,209,0) 0%, rgba(238,238,238,1) 100%);
+//   p {
+//     position: relative;
+//     top: 50%;
+//     left: 50%;
+//     transform: translate(-50%, -50%);
+//     font-size: 1.5rem;
+//   }
+// }
 
 // Chart Stuff
 

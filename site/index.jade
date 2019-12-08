@@ -1,10 +1,10 @@
 article
-    .section(id="waypoint-0")
+    .section
         .contents
             h1 The Evolution of Bias in the Media
             p.byline by Matt Adereth, Ashesh Choudhury, and Aithne Feay
 
-    .section(id="waypoint-1")
+    .section
         .contents
             h3.rellax(data-rellax-speed="0.5") Background and Motive
             p There has been a great deal of discussion in recent and distant memory over the notion that one of the great American papers of record, The New York Times, is a "biased" news source. This debate often comes from both sides of the political spectrum, with Conservatives claiming that the paper is Liberal and vice-versa. These contradictory claims are rooted in the difficulty in both defining and measuring political bias.
@@ -12,7 +12,39 @@ article
             p There have also been several attempts to quantitatively evaluate the bias of news sources.  Traditional sentiment analysis techniques have been applied to measure the positivity or negativity of articles about politicians and movements. While certainly interesting, the training corpus for the applied sentiment models, typically reviews of movies and product, may not utilize the same language styles as a newspaper article or editorial.
             p We seek to skirt the issue of temporal relativity and the problems of identifying sentiment with questionably applicable training data by training a classifier that predicts whether an article was spoken by a Democrat or a Republican. We then apply the classifier to news articles over time to evaluate whether the language used sounds like it came from one party or the other.
 
-    .section(id="waypoint-2")
+    .section
+        .contents.contents-articles
+            h3.rellax(data-rellax-speed="0.5") Sample Articles
+            .article
+                h4.confidence.republican 80% confidence in Republican prediction
+                h3 Off-Duty Detective Wounded In Struggle After a Traffic Stop
+                h4 By JOHN T. McQUISTON · MINEOLA L.I. · April 12 1995
+                p An off-duty police officer was shot in the head and critically wounded early this morning after he stopped a motorist for a traffic violation the Nassau County police said today.
+                p James Curtis a detective with the Lynbrook Police Department was shot once in the back of his head with his own weapon in a struggle in the parking lot of a newspaper delivery service the police said. Charles Davis of Roosevelt L.I. has been arrested in the shooting.
+                p The police said Mr. Davis had a paper route and used his car to make deliveries. Witnesses to the shooting said Mr. Davis had come to pick up bundles of The New York Times at Tri-State News delivery service. Mr. Davis was working as a substitute deliverer for an independent contractor with Tri-State.
+                p The confrontation began shortly before 3:30 A.M. when Detective Curtis who was driving his own car and was out of uniform noticed a car with defective headlights -- bright high-beams and no low-beams -- and tried to pull it over.
+                p The police said the car continued for about another mile before pulling into the parking lot at Tri-State News at 1800 Access Road in Oceanside.
+                p Detective Curtis followed the car into the parking lot identified himself to the driver as a police officer displayed his badge and took out his gun according to Detective Sgt. William Cocks of the Nassau County police.
+                p "He ordered Mr. Davis to lie prone on the ground and he complied" Sergeant Cocks said. "He then asked two other men in the parking lot who were witnesses to call 911 for more police."  The police said Detective Curtis put his badge back in his pocket and his gun in his waistband. After Mr. Davis got up the police said he began grappling with Detective Curtis took the officer's gun and fled into the Tri-State office where he shot Detective Curtis 43 in the back of the head.
+                p Detective Curtis a 21-year veteran of the Lynbrook department was taken to South Nassau Hospital where his condition was listed as critical.
+                p The police said Detective Curtis was in the Swiss Tavern restaurant in East Rockaway earlier this morning. "We believe he had a couple of drinks but that's all under investigation" Sergeant Cocks said.
+                p The police said Mr. Davis had prior arrests for assault and possession of a stolen car and that his driver's license had been suspended.
+                p "Perhaps that's why he grabbed for the gun" Sergeant Cocks said. "He didn't want to get arrested again."
+
+            .article
+                h4.confidence.democrat 80% confidence in Democrat prediction
+                h3 A U.N. Success Story
+                h4 By Elizabeth Becker · PHNOM PENH Cambodia · April 28th 1995
+                p For years it was called the Broken Bridge. Blown up by Communist sappers in 1972 it left a silhouette that ended halfway across the Tonle Sap River at the edge of this city. A few months ago it reopened repaired by the Japanese who originally built it. The American Friendship Highway which connects the city to its only seaport is being repaired by the United States.
+                p Nearly two years after the United Nations peacekeeping force left Cambodia these countries and other guarantors of the 1991 Paris Peace Agreement are still committed to insuring that one of the U.N.'s most ambitious and expensive peace plans protects and rebuilds Cambodia.
+                p But as Cambodia marks the 20th anniversary of the Khmer Rouge takeover the successes of this peacekeeping mission have been overlooked. When experts discuss the U.N. the debate centers on whether Bosnia or Somalia was the biggest failure. The Cambodian peace mission is dismissed as too costly and ineffective because the Khmer Rouge still exist the peasants are still poor and the Government is corrupt. What's forgotten is what moved the U.N. to mount the plan: two decades of war; destruction of the society by the Khmer Rouge who caused one million deaths and massacred intellectuals creating one of the world's lowest literacy rates; economic decay reflected in annual per capita income under $200.
+                p The Paris plan has worked however imperfectly. It ended the war brought 350000 refugees home and set up democratic elections in which 90 percent of the population voted. Today the lives of the people are improving and the national mood favors work not rebellion. A small middle class is growing. The gross national product is up 5.2 percent to about $2.2 million. The currency is stable. The budget is balanced.
+                p And the Khmer Rouge are being cornered. Their soldiers are defecting by the hundreds. The dwindling force of 5000 Khmer Rouge has been pushed back to barred redoubts in northwestern Cambodia.
+                p The National Assembly created one of Asia's most democratic constitutions. Cambodia has a thriving human rights community. Indeed the hard-won individual rights are among the U.N.'s greatest achievements showing Cambodians what a normal life can be with the freedom to see friends say what they want and do as they please.
+                p Cambodia's return to democracy has been rocky. Freedoms are under constant attack by leaders who liked the old ways. Corruption is everywhere: Ninety percent of the country's high school seniors failed final exams when they were prevented from cheating. The Government openly colludes with Asian lumber companies both making millions of dollars from cutting down the country's forests. But a foreign official said: "I've seen this stage in other countries' climb out of poverty. It will take another 20 years but Cambodia is on its way."  To end the war 15 countries spent five years negotiating an agreement with the Cambodians. More than 30 countries donated money and troops to the mission. Cambodia was a long-term project devised by countries that did not cut and run. Should these countries doubt their success they might consider the career of Prince Norodom Sirivudh. He was recently squeezed out of the Government in a dispute. In the old days someone like him would have joined a rival army or fled to Paris. Instead he is opening Cambodia's first think-tank from which to espouse his dissenting opinions. Would that Bosnia Somalia or Haiti were at that stage of political life two years after the U.N.'s blue helmets left.
+                p Elizabeth Becker senior foreign editor of National Public Radio is author of "When the War Was Over" a history of modern Cambodia.
+
+    .section
         .contents.contents-graphic
             .graphic-header
                 h3.rellax(data-rellax-speed="0.5") Keyword References
