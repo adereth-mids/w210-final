@@ -26,6 +26,7 @@ article
     .section
         .contents.contents-articles
             h3.rellax(data-rellax-speed="0.5") Sample Articles
+            p The following demonstrates one sample article from each class with a highly-confident prediction.
             .article
                 h4.confidence.republican 80% confidence in Republican prediction
                 h3 Off-Duty Detective Wounded In Struggle After a Traffic Stop
@@ -54,10 +55,12 @@ article
                 p The National Assembly created one of Asia's most democratic constitutions. Cambodia has a thriving human rights community. Indeed the hard-won individual rights are among the U.N.'s greatest achievements showing Cambodians what a normal life can be with the freedom to see friends say what they want and do as they please.
                 p Cambodia's return to democracy has been rocky. Freedoms are under constant attack by leaders who liked the old ways. Corruption is everywhere: Ninety percent of the country's high school seniors failed final exams when they were prevented from cheating. The Government openly colludes with Asian lumber companies both making millions of dollars from cutting down the country's forests. But a foreign official said: "I've seen this stage in other countries' climb out of poverty. It will take another 20 years but Cambodia is on its way."  To end the war 15 countries spent five years negotiating an agreement with the Cambodians. More than 30 countries donated money and troops to the mission. Cambodia was a long-term project devised by countries that did not cut and run. Should these countries doubt their success they might consider the career of Prince Norodom Sirivudh. He was recently squeezed out of the Government in a dispute. In the old days someone like him would have joined a rival army or fled to Paris. Instead he is opening Cambodia's first think-tank from which to espouse his dissenting opinions. Would that Bosnia Somalia or Haiti were at that stage of political life two years after the U.N.'s blue helmets left.
                 p Elizabeth Becker senior foreign editor of National Public Radio is author of "When the War Was Over" a history of modern Cambodia.
+            p It is immediately apparent that the classifier can detect terms which strongly reflect a particular party.
 
     .section
         .contents
-            p Finally, we present an interactive exploration of how the New York Times sounds over time when discussing a particular keyword or phrase. The average party prediction across all articles within each year is shown.
+            h3.rellax(data-rellax-speed="0.5") Visualizing the Output
+            p Finally, we developed an interactive exploration of how the New York Times sounds over time when discussing a particular keyword or phrase. The average party prediction across all articles within each year is shown.
 
     .section
         .contents.contents-graphic
@@ -68,3 +71,9 @@ article
                 p
                     i A few good sample keywords are "fiscal", "philanthropy", and "immigration."
             #graphic
+    
+    .section
+        .contents
+            p Through this research process, we have found it possible to associate certain language with a particular political party in the United States.
+            p While the scope of our application was limited, the potential of our model is limitless and we hope to see it applied on more diverse datasets in the future.
+            p To check out our model and learn how you can apply it to your domain, please explore this #[a(href="https://gist.github.com/aithnefeay/521273845bc603978f22a3e4dba66b16") gist].
