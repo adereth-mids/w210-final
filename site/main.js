@@ -108,10 +108,16 @@ const loadLineChart = (data) => {
 
     const colors = d3.scale.linear().domain([25,50,75]).range([blueHex, greyHex, redHex]);
 
-    const x = d3.scale.ordinal().rangeRoundBands([20, width], .05);
+
+
+    const xRange = [20];
+    data.forEach(function(d, i) {
+        xRange.push((i + 1) * (width / data.length));
+    });
+    const x = d3.scale.ordinal().range(xRange)
     const y = d3.scale.linear().range([height, 0]);
 
-    const xAxis = d3.svg.axis().scale(x).orient("bottom").ticks(5).tickFormat(function(t) { return `\'${t}`});
+    const xAxis = d3.svg.axis().scale(x).orient("bottom").tickFormat(function(t) { return `\'${t}`});
     const yAxis = d3.svg.axis().scale(y).orient("left").ticks(10).tickFormat(function(t) {
         if (t === 100) {
             return 'Republican';
@@ -155,10 +161,7 @@ const loadLineChart = (data) => {
     svg.append("g").attr("class", "y axis").call(yAxis).append("text").attr("transform", "rotate(-90)").attr("y", 6)
        .attr("dy", ".71em").style("text-anchor", "end").text("Sounds Like");
 
-    svg.selectAll(".text").data(data).enter().append("text").attr("class","label").attr("x", (function(d) { return x(d.date) + (x.rangeBand() / data.length - 18); }  ))
-       .attr("y", function(d) { return y(d.value) - 25; }).attr("dy", ".75em").text(function(d) { return `${50 + Math.abs(50 - Math.round(d.value))}%`; });
-
-    svg.append("line").attr("x1", 27).attr("y1", height / 2).attr("x2", width - 5).attr("y2", height / 2)
+    svg.append("line").attr("x1", 20).attr("y1", height / 2).attr("x2", width - 5).attr("y2", height / 2)
        .attr("stroke-width", 2).attr("stroke", "rgba(0,0,0,0.2)").style("stroke-dasharray", ("3, 3"));
 }
 
